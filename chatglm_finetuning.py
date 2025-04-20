@@ -184,9 +184,10 @@ def prepare_dataset(file_path, tokenizer, max_length=1024):
             text = example["text"].strip()
             
             # 按照问题和答案通过空格分割的格式处理
-            if " " in text:
+            seq = ","
+            if seq in text:
                 # 使用第一个空格分割问题和答案
-                question, answer = text.split(" ", 1)
+                question, answer = text.split(seq, 1)
                 
                 # 构建ChatGLM3对话格式
                 formatted_text = f"[Round 1]\n\n问：{question}\n\n答：{answer}"
